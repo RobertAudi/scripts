@@ -1,0 +1,50 @@
+#!/usr/local/bin/fish
+
+set_color blue
+
+echo "Show all filename extensions in Finder"
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+
+echo "Use current directory as default search scope in Finder"
+defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+echo "Show Path bar in Finder"
+defaults write com.apple.finder ShowPathbar -bool true
+
+echo "Show Status bar in Finder"
+defaults write com.apple.finder ShowStatusBar -bool true
+
+echo "Expand save panel by default"
+defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
+
+echo "Expand print panel by default"
+defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
+
+echo "Display full POSIX path as Finder window title"
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+
+echo "Disable the warning when changing a file extension"
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+echo "Show the ~/Library folder"
+chflags nohidden ~/Library
+
+echo "Automatically hide and show the Dock"
+defaults write com.apple.dock autohide -bool true
+
+echo "Show remaining battery percentage; hide time"
+defaults write com.apple.menuextra.battery ShowPercent -string "YES"
+defaults write com.apple.menuextra.battery ShowTime -string "NO"
+
+set_color yellow
+
+echo "Kill affected applications"
+for app in Finder Dock SystemUIServer
+  killall "$app" > /dev/null ^/dev/null
+end
+
+set_color green
+
+echo "All done!"
+
+set_color normal

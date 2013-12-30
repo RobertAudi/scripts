@@ -1,0 +1,32 @@
+#!/usr/local/bin/fish
+
+set -l cmd
+
+if test (count $argv) -eq 0
+  set -l directory (pwd)
+  set cmd " cd $directory"
+else
+  if test -d "$argv[1]"
+    set cmd " cd $argv[1]"
+  else if test -d "$HOME/$argv[1]"
+    set cmd " cd $HOME/$argv[1]"
+  else if contains "$argv[1]" (functions)
+    set cmd " $argv[1]"
+  else
+    set cmd " cd (autojump $argv[1])"
+  end
+end
+
+set -U NEW_SESSION_CMD $cmd
+set -U TILE_WINDOW 1
+
+osascript -e "tell application \"iTerm\"" \
+          -e "set newTerminal to (make new terminal)" \
+          -e "tell newTerminal" \
+          -e "set newSession to (make new session at the end of sessions)" \
+          -e "tell newSession to exec command \"/usr/local/bin/fish -l\"" \
+          -e "end tell" \
+          -e "end tell"
+
+history --delete -contains "window"
+history --delete -prefix "window"
