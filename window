@@ -1,4 +1,10 @@
 #!/usr/local/bin/fish
+#
+# Open a new iTerm window.
+#
+# Similar to the tab script.
+# Take a look at it for more info
+#
 
 set -l cmd
 

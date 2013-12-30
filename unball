@@ -1,5 +1,8 @@
 #!/usr/bin/python
 #-*- coding:utf-8 -*-
+#
+# Unarchive a vimball into a set of directories and files
+#
 
 import os, sys
 

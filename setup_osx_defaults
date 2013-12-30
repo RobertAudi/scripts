@@ -1,4 +1,7 @@
 #!/usr/local/bin/fish
+#
+# Sensible OS X defaults
+#
 
 set_color blue
 

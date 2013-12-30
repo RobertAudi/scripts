@@ -1,4 +1,8 @@
 #!/bin/bash
+#
+# Monitors MOC and displays a Growl
+# notification when state changes (i.e.: New song, play, pause, etc.)
+#
 
 while out=$(`/usr/local/bin/brew --prefix moc`/bin/mocp -i); do
   # Parse mocp output.

@@ -1,4 +1,22 @@
 #!/usr/local/bin/fish
+#
+# Opens a new iTerm tab and go in the appropriate
+# directory intelligently.
+#
+# Takes directory search query as argument.
+# If no argument is passed, a new tab is opened
+# in the same directory.
+#
+# Else if:
+#
+# - argument is a valid directory path relative
+#   to the home directory:
+#     => cd into that directory
+# - argument is a valid fish function or command:
+#     => execute that function/command
+# - argument is none of the above:
+#     => cd to the first autojump match
+#
 
 set -l cmd
 
