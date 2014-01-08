@@ -9,7 +9,7 @@
     <key>ProgramArguments</key>
     <array>
       <string>/bin/bash</string>
-      <string>/Users/aziz/.homesick/repos/dotfiles/home/bin/moc-growl.sh</string>
+      <string>/Users/aziz/bin/moc-growl.sh</string>
     </array>
     <key>EnableGlobbing</key>
     <true/>
